@@ -7,7 +7,7 @@ public class Q234 {
         ListNode fast = head;
         ListNode slow = head;
 
-        while (fast != null && fast.next != null){
+        while (fast != null && fast.next != null){ // 两个
             fast = fast.next.next;
             slow = slow.next;
         }

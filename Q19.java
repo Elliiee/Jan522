@@ -7,7 +7,7 @@ public class Q19 {
     public ListNode removeNthFromEnd(ListNode head, int n){
         ListNode dummyHead = new ListNode(0);
         dummyHead.next = head;
-        ListNode fast = dummyHead;
+        ListNode fast = dummyHead; // 是假的开头不是真的head
         ListNode slow = dummyHead;
 
         for (int i = 0; i < n; i++){

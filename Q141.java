@@ -6,7 +6,7 @@ again by continuously following the next pointer. Internally, pos is used
  */
 public class Q141 {
     public boolean hasCycle(ListNode head){
-        if (head == null) return false;
+        if (head == null) return false; // 这里不能省去
 
         ListNode slow = head;
         ListNode fast = head.next;
