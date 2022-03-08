@@ -1,0 +1,2 @@
+Quick Find:
+Store the root value (instead of parent value), so it's easy to find the same root obviously.

@@ -1,0 +1,19 @@
+Introduction
+
+Our friend circle is a huge graph.
+
+Here is introducing 3 types of graph: undirected graphs, directed graphs, weighted graph.
+1. undirected graphs: the edges between any two vertices do not have a direction.
+2. directed graphs: the edges between any two vertices are directional.
+3. weighted graphs: each edge has an associated weight, such as time, distance, size, etc.
+
+Graph is a non-linear DS consisting of vertices and edges.
+Vertex, vertices
+Edge
+Path
+Path Length
+Cycle
+Negative Weight Cycle: the sum of the weights of all edges of a cycle is negative
+Degree of a Vertex: applies to unweighted graphs; the number of edges connecting the vertex
+In-Degree
+Out-Degree

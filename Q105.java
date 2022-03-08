@@ -24,7 +24,8 @@ public class Q105 {
 
         current.left = buildTreeHelper(preorder, inorder, pre_st + 1, in_st, i - 1);
         current.right = buildTreeHelper(preorder, inorder, pre_st + (i - in_st + 1), i + 1, in_end);
-
+        // i - in_st + 1 是left tree的size
+        
         return current;
     }
 }

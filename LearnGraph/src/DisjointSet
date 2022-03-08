@@ -1,0 +1,16 @@
+Disjoint Set aka Union-Find
+
+It is the way we quickly check whether two vertices are connected.
+For instance, we can use a disjoint set to determine if two people share a common ancestor.
+
+Terminologies
+Parent node
+Root node: a node without a parent node; it can be viewed as the parent node of itself
+
+2 important function in a disjoint set:
+find() : finds the root node of a vertex
+union() : unions two vertices by making their root nodes the same
+
+2 ways to implement disjoint set:
+Quick Find
+Quick Union 
