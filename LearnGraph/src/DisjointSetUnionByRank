@@ -1,0 +1,9 @@
+Disjoint Set - Union by Rank (only works for quick union).
+
+The word "rank" means ordering by specific criteria.
+
+Choose the root of the taller tree as the new root,
+so it will not increase the height of the tree after union.
+(If their ranks are the same,
+then either one of their root can be the new root.) 
+

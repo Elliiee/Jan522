@@ -1,6 +1,5 @@
-Quick Union:
-Store parent value.
+Quick Union:Store parent value.
 
-Quick Find is storing root value instead.
+(Quick Find is storing root value instead.)
 
 Generally speaking, Quick Union is more efficient than Quick Find.
