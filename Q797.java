@@ -6,7 +6,7 @@ public class Q797 {
         path.add(node);
 
         if (node == graph.length - 1){
-            paths.add(new ArrayList<>());
+            paths.add(new ArrayList<>(path));
             return;
         }
 
