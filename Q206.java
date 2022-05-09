@@ -14,4 +14,14 @@ public class Q206 {
         }
         return prev;
     }
+
+    public ListNode reverseListRecursion(ListNode head){
+        if (head == null || head.next == null)
+            return head;
+
+        ListNode p = reverseListRecursion(head.next);
+        head.next.next = head;
+        head.next = null;
+        return p;
+    }
 }
