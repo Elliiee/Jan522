@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Q364 {
+public class Q346 {
     private int size;
     List<Integer> queue = new ArrayList<>();
 
-    public Q364(int size) {
+    public Q346(int size) {
         this.size = size;
     }
 
