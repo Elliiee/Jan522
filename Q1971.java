@@ -13,14 +13,14 @@ public class Q1971 {
             adjacencyList.get(edge[1]).add(edge[0]);
         }
 
-        Deque<Integer> stack = new ArrayDeque<>();
-        stack.push(source);
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(source);
 
         boolean[] seen = new boolean[n];
         Arrays.fill(seen, false);
 
-        while(!stack.isEmpty()){
-            int node = stack.pop();
+        while(!queue.isEmpty()){
+            int node = queue.poll();
 
             if (node == destination)
                 return true;
@@ -30,7 +30,7 @@ public class Q1971 {
             seen[node] = true;
 
             for (int neighbor : adjacencyList.get(node))
-                stack.push(neighbor);
+                queue.add(neighbor);
         }
 
         return false;

@@ -26,7 +26,7 @@ public class Q994 {
             return 0; // no fresh oranges to contaminate
 
         int count = 0;
-        int[][] directions = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+        int[][] directions = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 
         while (!queue.isEmpty()){
             count++;
