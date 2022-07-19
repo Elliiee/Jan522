@@ -4,17 +4,35 @@ import java.util.List;
 public class Q54 {
     // spiral matrix
     public List<Integer> spiralOrder(int[][] matrix){
-        int VISITED = 101; // constrains says -100 < x <100, so here use 101 just for marking purpose
-        int rows = matrix.length, column = matrix[0].length;
-        int[][] directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}}; // sequence matters
-        int currentDirection = 0; // initial direction: moving right
-        int changeDirection = 0; // the number of times we change the direction
-        int row = 0, col = 0;
         List<Integer> result = new ArrayList<>();
-        result.add(matrix[0][0]);
-        matrix[0][0] = VISITED;
+        int m = matrix.length, n = matrix[0].length;
+        int up = 0, left = 0, right = n - 1, down = m -1; // 4 boundaries
 
-        //place holder
+        while (up <= down && left <= right){
+            for (int col = left; col <= right; col++){ // left to right
+                result.add(matrix[up][col]);
+            }
+            up++;
+
+            for (int row = up; row <= down; row++){
+                result.add(matrix[row][right]);
+            }
+            right--;
+
+            if (up <= down){
+                for (int col = right; col >= left; col--){
+                    result.add(matrix[down][col]);
+                }
+            }
+            down--;
+
+            if (left <= right){
+                for (int row = down; row >= up; row--){
+                    result.add(matrix[row][left]);
+                }
+            }
+            left++;
+        }
         return result;
     }
 }
