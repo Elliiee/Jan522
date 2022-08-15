@@ -1,74 +1,54 @@
 public class Q208 {
     // implement Trie
-
-    class TrieNode{
-        private TrieNode[] links;
-        private final int R = 26;
-        private boolean isEnd;
-
-        public TrieNode(){
-            links = new TrieNode[R];
-        }
-
-        public boolean containsKey(char ch){
-            return links[ch - 'a'] != null;
-        }
-
-        public TrieNode get(char ch){
-            return links[ch - 'a'];
-        }
-
-        public void put(char ch, TrieNode node){
-            links[ch - 'a'] = node;
-        }
-
-        public void setEnd(){
-            isEnd = true;
-        }
-
-        public boolean isEnd(){
-            return isEnd;
-        }
+    private class Node{
+        Node[] children = new Node[26];
+        boolean isLeaf;
     }
 
-    private TrieNode root;
+    private Node root = new Node();
 
-    public Q208(){
-        root = new TrieNode();
-    }
+    public Q208(){}
 
     public void insert(String word){
-        TrieNode node = root;
-        for (int i = 0; i < word.length(); i++){
-            char currentChar = word.charAt(i);
-            if (!node.containsKey(currentChar)){
-                node.put(currentChar,new TrieNode());
-            }
-            node = node.get(currentChar);
+        insert(word, root);
+    }
+
+    private void insert(String word, Node node){
+        if (node == null) return;
+        if (word.length() == 0){
+            node.isLeaf = true;
+            return;
         }
-        node.setEnd();
-    }
-
-    private TrieNode searchPrefix(String word){
-        TrieNode node = root;
-        for (int i = 0; i < word.length(); i++){
-            char currentChar = word.charAt(i);
-            if (node.containsKey(currentChar)){
-                node = node.get(currentChar);
-            } else {
-                return null;
-            }
+        int index = indexForChar(word.charAt(0));
+        if (node.children[index] == null){
+            node.children[index] = new Node();
         }
-        return node;
+        insert(word.substring(1), node.children[index]);
     }
 
-    public boolean search(String word){
-        TrieNode node = searchPrefix(word);
-        return node != null && node.isEnd();
+    public boolean search(String word) {
+        return search(word, root);
     }
 
-    public boolean startsWith(String prefix){
-        TrieNode node = searchPrefix(prefix);
-        return node != null;
+    private boolean search(String word, Node node) {
+        if (node == null) return false;
+        if (word.length() == 0) return node.isLeaf;
+        int index = indexForChar(word.charAt(0));
+        return search(word.substring(1), node.children[index]);
+    }
+
+    public boolean startsWith(String prefix) {
+        return startWith(prefix, root);
+    }
+
+    private boolean startWith(String prefix, Node node) {
+        if (node == null) return false;
+        if (prefix.length() == 0) return true;
+        int index = indexForChar(prefix.charAt(0));
+        return startWith(prefix.substring(1), node.children[index]);
+    }
+
+    private int indexForChar(char c) {
+        return c - 'a';
     }
 }
