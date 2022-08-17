@@ -17,7 +17,7 @@ public class Q409 {
         }
 
         if (!set.isEmpty())
-            return count*2 + 1;
+            return count*2 + 1; // you can add one/make it longer in the middle it's still a palindrome
 
         return count*2;
     }

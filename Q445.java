@@ -42,18 +42,20 @@ public class Q445 {
         Stack<Integer> s1 = new Stack<>();
         Stack<Integer> s2 = new Stack<>();
 
-        while (l1 != null){
-            s1.push(l1.val);
-            l1 = l1.next;
+        ListNode current = l1;
+        while(current != null){
+            s1.add(current.val);
+            current = current.next;
         }
-        while (l2 != null){
-            s2.push(l2.val);
-            l2 = l2.next;
+
+        current = l2;
+        while(current != null){
+            s2.add(current.val);
+            current = current.next;
         }
 
         ListNode head = null;
         int carry = 0;
-        ListNode current;
         while (!s1.isEmpty() || !s2.isEmpty()){
             int x = !s1.isEmpty() ? s1.pop() : 0;
             int y = !s2.isEmpty() ? s2.pop() : 0;
