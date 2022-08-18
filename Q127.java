@@ -1,3 +1,4 @@
+import java.awt.image.AreaAveragingScaleFilter;
 import java.util.*;
 
 public class Q127 {
@@ -34,5 +35,65 @@ public class Q127 {
             count++;
         }
         return 0;
+    }
+
+    private List<Integer>[] buildGraph(List<String> wordList){
+        int size = wordList.size();
+        List<Integer>[] result = new List[size];
+        for (int i = 0; i < size; i++){
+            result[i] = new ArrayList<>();
+            for (int j = 0; j < size; j++){
+                if (isConnected(wordList.get(i), wordList.get(j)))
+                    result[i].add(j);
+            }
+        }
+        return result;
+    }
+
+    private boolean isConnected(String s1, String s2){
+        int diffCount = 0;
+        for (int i = 0; i < s1.length() && diffCount <= 1; i++){
+            if (s1.charAt(i) != s2.charAt(i))
+                diffCount++;
+        }
+        return diffCount == 1;
+    }
+
+    private int getShortestPath(List<Integer>[] graph, int start, int end){
+        Queue<Integer> queue = new ArrayDeque<>();
+        boolean[] visited = new boolean[graph.length];
+        queue.add(start);
+        visited[start] = true;
+        int path = 1;
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            path++;
+            for (int i = 0; i < size; i++){
+                int current = queue.poll();
+                for (int next : graph[current]){
+                    if (next == end) return path;
+
+                    if(visited[next]) continue;
+                    visited[next] = true;
+                    queue.add(next);
+                }
+            }
+        }
+        return 0;
+    }
+
+    public int ladderLengthII(String beginWord, String endWord, List<String> wordList){
+        wordList.add(beginWord);
+        int size = wordList.size();
+        int start = size - 1;
+        int end = 0;
+        while(end < size && !wordList.get(end).equals(endWord)){
+            end++;
+        }
+        if (end == size) return 0;
+
+        List<Integer>[] graph = buildGraph(wordList);
+
+        return getShortestPath(graph, start, end);
     }
 }
