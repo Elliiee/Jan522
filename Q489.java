@@ -3,36 +3,34 @@ import java.util.Set;
 
 public class Q489 {
     // robot clean
-    int[][] directions = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
-    Set<int[]> visited = new HashSet<>();
-    Robot robot;
+    public static final int[][] DIRS = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
 
-    public void goBack(){
+    public void cleanRoom(Robot robot) {
+        clean(robot, 0, 0, 0, new HashSet<>());
+    }
+
+    private void clean(Robot robot, int x, int y, int curDirection, Set<String> cleaned) {
+        robot.clean();
+        cleaned.add(x + " " + y);
+
+        for (int i = 0; i < 4; i++) {
+            int nx = x + DIRS[curDirection][0];
+            int ny = y + DIRS[curDirection][1];
+            if (!cleaned.contains(nx + " " + ny) && robot.move()) {
+                clean(robot, nx, ny, curDirection, cleaned);
+                goBack(robot);
+            }
+            robot.turnRight();
+            curDirection = (curDirection + 1) % 4;
+        }
+
+    }
+
+    private void goBack(Robot robot) {
         robot.turnRight();
         robot.turnRight();
         robot.move();
         robot.turnRight();
         robot.turnRight();
-    }
-
-    public void backtrack(int row, int col){
-        visited.add(new int[]{row, col});
-        robot.clean();
-        for (int[] d : directions){
-            int newRow = row + d[0];
-            int newCol = col + d[1];
-
-            if (!visited.contains(new int[]{newRow, newCol}) && robot.move()){
-                backtrack(newRow, newCol);
-                goBack();
-            }
-
-            robot.turnRight();
-        }
-    }
-
-    public void cleanRoom(Robot robot){
-        this.robot = robot;
-        backtrack(0, 0);
     }
 }
