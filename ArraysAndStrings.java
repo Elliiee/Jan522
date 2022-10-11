@@ -274,8 +274,20 @@ Array and Dynamic Array
 
 
     /*
-    Reverse words in a string II
+    Reverse words in a string III
+    Given a string s, reverse the order of characters in each word within a sentence while still
+    preserving whitespace and initial word order.
      */
+    public String reverseWordsIII(String s){
+        String[] words = s.split(" ");
+        StringBuilder result = new StringBuilder();
+        for (String w : words){
+            result.append(new StringBuilder(w).reverse().toString() + " ");
+        }
+        //StringBuffer is threadsafe and synchronized whereas StringBuilder is not.
+
+        return result.toString().trim();
+    }
 
 
     /*
