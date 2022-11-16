@@ -32,4 +32,43 @@ public class Q131 {
         doPartition(s, new ArrayList<>(), results);
         return results;
     }
+
+    /*
+    131 Palindrome Partitioning
+    Given a string s, partition s such that every substring of the partition
+    is a palindrome. Return all possible palindrome
+    Input: s = "aab"
+    Output: [["a","a","b"],["aa","b"]]
+     */
+
+    /*
+    Overview
+    The aim to partition the string into all possible palindrome combinations. To
+    achieve this, we must generate all possible substrings of a string by partitioning
+    at every index until we reach the end of the string.
+    Example, abba can be partitioned as ["a","ab","abb","abba"].
+    Each generated substring is considered as a potential candidate.
+    Then check if it is a Palindrome.
+     */
+
+    /*
+    Approach 1 Backtracking
+     */
+
+    private void backtracking(int start, List<List<String>> result, List<String> currentList,
+                              String s){
+        if (start >= s.length()){
+            result.add(new ArrayList<String>(currentList));
+        }
+
+        for (int end = start; end < s.length(); end++){
+            if(isPalindrome(s, start, end)){
+                currentList.add(s.substring(start, end + 1));
+                backtracking(end + 1, result, currentList, s);
+                currentList.remove(currentList.size() - 1);
+            }
+        }
+    }
+
+
 }
