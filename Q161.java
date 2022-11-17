@@ -8,6 +8,9 @@ public class Q161 {
         int sLen = s.length();
         int tLen = s.length();
 
+        //this step is because the following steps are assuming
+        //s is the shorted one
+        //so if s is the larger one, then reverse them
         if (tLen > s.length()){
             return isOneEditDistance(t, s);
         }
