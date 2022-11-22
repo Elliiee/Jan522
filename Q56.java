@@ -1,5 +1,7 @@
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Q56 {
     /*
@@ -34,5 +36,38 @@ public class Q56 {
         }
 
         return result.toArray(new int[result.size()][]); //notice this language writing
+    }
+
+    /*
+    The idea is to sort the intervals by their starting points.
+    Then, we take the first intervals and compare its end with the next interval's start.
+    As long as they overlap, we update the end to be the max end of the overlapping
+    intervals.
+    Once we find a non-overlapping interval, we can add the previous "extended" interval
+    to the answer list and repeat the previous process.
+
+    Sorting takes O(nlog(n)) and merging the intervals takes O(n).
+    So, the resulting algorithm takes O(nlog(n)).
+     */
+
+    public int[][] mergeII(int[][] intervals){
+        if (intervals.length <= 1) return intervals;
+
+        Arrays.sort(intervals, (i1, i2) -> (i1[0] - i2[0]));
+
+        List<int[]> result = new ArrayList<>();
+
+        int[] newInterval = intervals[0];
+        result.add(newInterval);//Does this mean you can change the end later ??
+        for (int[] interval : intervals){
+            if (interval[0] <= newInterval[1]){
+                newInterval[1] = Math.max(newInterval[1], interval[1]);
+            } else {
+                newInterval = interval;
+                result.add(newInterval);
+            }
+        }
+
+        return result.toArray(new int[result.size()][]);
     }
 }

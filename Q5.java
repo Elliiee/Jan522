@@ -40,4 +40,10 @@ public class Q5 {
             maxLen = j - i - 1; //and the length of the current palindrome
         }
     }
+
+
+    /*
+
+     */
+
 }
