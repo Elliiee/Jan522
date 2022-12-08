@@ -13,12 +13,12 @@ public class Q59 {
         int num = 1;
 
         while (rowStart <= rowEnd && colStart <= colEnd){
-            for (int j = colStart; j < colEnd; j++){
+            for (int j = colStart; j <= colEnd; j++){
                 matrix[rowStart][j] = num++;
             }
             rowStart++; // increase the row
 
-            for (int i = rowStart; i < rowEnd; i++){
+            for (int i = rowStart; i <= rowEnd; i++){
                 matrix[i][colEnd] = num++;
             }
             colEnd--; //spiral
@@ -36,6 +36,6 @@ public class Q59 {
             colStart++;
         }
 
-        return matrix;
+        return matrix; //1 2 3 6 9 8 7 4 5
     }
 }
