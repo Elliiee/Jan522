@@ -5,6 +5,8 @@ public class Node {
     Node next;
     Node random;
     public List<Node> neighbors;
+    Node prev;
+    Node child;
 
     public Node(int val){
         this.val = val;
