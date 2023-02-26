@@ -4,11 +4,59 @@ import java.util.List;
 import java.util.Queue;
 
 public class Q1091 {
-    // shortest path in binary matrix
+    //02/25/23
+    class State{
+        int row;
+        int col;
+        int steps;
+        State(int row, int col, int steps){
+            this.row = row;
+            this.col = col;
+            this.steps = steps;
+        }
+    }
+
     private static final int[][] directions = new int[][]{
             {-1, -1}, {-1, 0}, {0, -1}, {-1, 1},
             {1, 1}, {1, 0}, {0, 1}, {1, -1}
     };
+
+    private boolean valid(int row, int col, int[][] grid){
+        return 0 <= row && row <grid.length
+                && 0 <= col && col < grid[0].length
+                && grid[row][col] == 0;
+    }
+
+    public int shortestPathIII(int[][] grid){
+        if (grid[0][0] == 1) return -1; //top left cell is not open, return -1
+
+        int n = grid.length; //this is a square matrix, so m == n
+
+        boolean[][] seen = new boolean[n][n];
+        seen[0][0] = true;
+        Queue<State> queue = new ArrayDeque<>();
+        queue.add(new State(0, 0, 1));
+
+        while (!queue.isEmpty()){
+            State state = queue.poll();
+            int row = state.row, col = state.col, steps = state.steps;
+
+            if (row == n - 1 && col == n - 1) return steps; //reached the bottom right cell return the answer
+
+            for (int[] dir : directions){
+                int nextRow = row + dir[0], nextCol = col + dir[1];
+                if (valid(nextRow, nextCol, grid) && !seen[nextRow][nextCol]){
+                    seen[nextRow][nextCol] = true;
+                    queue.add(new State(nextRow, nextCol, steps + 1));
+                }
+            }
+        }
+        return -1;
+    }
+
+
+    // shortest path in binary matrix
+
 
     private List<int[]> getNeighbours(int row, int col, int[][] grid){
         List<int[]> neighbours = new ArrayList<>();

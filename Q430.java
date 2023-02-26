@@ -18,7 +18,7 @@ public class Q430 {
             }
             //connect the last child's node with current.next;
             currentChild.next = current.next;
-            //if the current's next is not null, you need it to it's previous node
+            //if the current's next is not null, you need it to its previous node
             if (current.next != null){
                 current.next.prev = currentChild;
             }

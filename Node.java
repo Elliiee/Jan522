@@ -24,4 +24,9 @@ public class Node {
         val = _val;
         neighbors = _neighbors;
     }
+
+    public Node(int _val, Node _next){
+        val = _val;
+        next = _next;
+    }
 }
