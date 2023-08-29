@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/DisjointSet/DisjointSet.iml" filepath="$PROJECT_DIR$/DisjointSet/DisjointSet.iml" />
       <module fileurl="file://$PROJECT_DIR$/ExploreDataStructureAndAlgorithms/ExploreDataStructureAndAlgorithms.iml" filepath="$PROJECT_DIR$/ExploreDataStructureAndAlgorithms/ExploreDataStructureAndAlgorithms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Neetcode/Neetcode/Heap.iml" filepath="$PROJECT_DIR$/Neetcode/Neetcode/Heap.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Jan522Test.iml" filepath="$PROJECT_DIR$/.idea/Jan522Test.iml" />
       <module fileurl="file://$PROJECT_DIR$/LearnGraph/LearnGraph.iml" filepath="$PROJECT_DIR$/LearnGraph/LearnGraph.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Neetcode/Neetcode.iml" filepath="$PROJECT_DIR$/Neetcode/Neetcode.iml" />
     </modules>
   </component>
 </project>

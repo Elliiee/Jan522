@@ -53,7 +53,7 @@ public class Q547 {
         int[][] isConnected = {{1,1,0}, {1,1,0},{0,0,1}};
     }
 
-    class UnionFind{
+    private class UnionFind{
         private int[] root;
         private int[] rank;
         private int count;
